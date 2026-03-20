@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – AuthApp</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="{% url 'dashboard' %}" class="logo">🔐 AuthApp</a>
+  <div class="nav-actions">
+    <span>Hello, <strong>{{ user.username }}</strong></span>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+  </div>
+</nav>
+
+<div class="dashboard-wrapper">
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="message {{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="welcome-card">
+    <h2>Welcome back, {{ user.username }}! 👋</h2>
+    <p>You are successfully logged in. This is your personal dashboard.</p>
+
+    <div class="info-grid">
+      <div class="info-tile">
+        <div class="tile-label">Username</div>
+        <div class="tile-value">{{ user.username }}</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-label">Email</div>
+        <div class="tile-value">{{ user.email|default:"Not set" }}</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-label">Member Since</div>
+        <div class="tile-value">{{ user.date_joined|date:"d M Y" }}</div>
+      </div>
+      <div class="info-tile">
+        <div class="tile-label">Last Login</div>
+        <div class="tile-value">{{ user.last_login|date:"d M Y, H:i" }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
