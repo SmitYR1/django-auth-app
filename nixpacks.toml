@@ -5,4 +5,4 @@ DJANGO_SETTINGS_MODULE = "django_auth_project.settings"
 cmds = ["pip install -r requirements.txt", "python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "gunicorn django_auth_project.wsgi --bind 0.0.0.0:$PORT"
+cmd = "python manage.py migrate && gunicorn django_auth_project.wsgi --bind 0.0.0.0:$PORT"
