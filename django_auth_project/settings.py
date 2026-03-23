@@ -7,7 +7,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-produc
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']  # Update with your domain in production
+ALLOWED_HOSTS = ['*', 'web-production-862bf.up.railway.app', 'localhost', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://web-production-862bf.up.railway.app',
+    'http://web-production-862bf.up.railway.app',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
