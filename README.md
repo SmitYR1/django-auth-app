@@ -1,3 +1,5 @@
+Website link for preview
+smit-djangoproject.up.railway.app
 # Django Auth Project
 
 A clean academic Django authentication project with Login, Register, Dashboard, and Logout functionality.
